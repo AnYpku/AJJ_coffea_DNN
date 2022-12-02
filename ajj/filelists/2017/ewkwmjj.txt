@@ -1,0 +1,16 @@
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/096BBAC5-9FAC-4643-98DE-933967463A3F.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/1E1DEE91-F9A2-FF4A-906A-2B56975C4ABD.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/22E2423B-34B6-424D-92A2-604F6575360D.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/280CB8BF-AFAA-254D-AB1A-6944DD78AA8E.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/28558DD2-1799-234F-90CC-99F51AE6A4A7.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/31FC4001-514F-534D-8F5F-F0298C01CC6A.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/598EE3DF-DD14-6F4C-AB79-C117BB1FD00D.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/5A1DF6F4-8151-7C4E-BE7C-8FA70C20758C.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/5CD30DE6-A721-264B-9C77-7075313FBB8D.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/5FB2B729-4017-6D4A-A380-14E07F276825.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/774B2C93-3D6C-144F-A8F5-D1B56F1C12C1.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/7DF9763F-48C4-EA42-8F9C-7206F957BA3D.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/89C93B4F-79DC-D042-8802-FFD93095F158.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/BCCEC900-968A-F64F-B892-BA6187DDA85F.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/DA980D07-3153-3F49-BF1C-9131B7294DF4.root
+/eos/cms/store/user/amlevin/data/nano/ewkwmjj/2017/FABD1F4C-05A0-8B47-86C0-9E4880A6FAF8.root

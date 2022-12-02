@@ -1,0 +1,6 @@
+/eos/cms/store/mc/RunIISummer20UL18NanoAODv9/VBFWH_HToBB_WToLNu_M-125_dipoleRecoilOn_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/40000/5E6CBA9A-5AA1-8D4D-ADC8-39AE1EBE90C7.root
+/eos/cms/store/mc/RunIISummer20UL18NanoAODv9/VBFWH_HToBB_WToLNu_M-125_dipoleRecoilOn_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/40000/6846230B-B5CF-C54A-9A81-9127078B1414.root
+/eos/cms/store/mc/RunIISummer20UL18NanoAODv9/VBFWH_HToBB_WToLNu_M-125_dipoleRecoilOn_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/40000/7B0C26BC-AB6D-9949-AA1F-3A81351517E3.root
+/eos/cms/store/mc/RunIISummer20UL18NanoAODv9/VBFWH_HToBB_WToLNu_M-125_dipoleRecoilOn_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/40000/82B1C936-46E1-1C4B-B27A-16E07418C6B0.root
+/eos/cms/store/mc/RunIISummer20UL18NanoAODv9/VBFWH_HToBB_WToLNu_M-125_dipoleRecoilOn_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/40000/A5C150A0-817D-8D4A-A88E-DE9A3AD80CCE.root
+/eos/cms/store/mc/RunIISummer20UL18NanoAODv9/VBFWH_HToBB_WToLNu_M-125_dipoleRecoilOn_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/40000/E4B50933-C8AF-1B4F-94A9-45EA4299552D.root

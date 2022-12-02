@@ -1,0 +1,4 @@
+root://eosuser.cern.ch//eos/user/a/amlevin/data/nano/ewkwhjjofficial/2016pre/2836F37D-C0DB-5043-8ADE-D78E673A8C55.root
+root://eosuser.cern.ch//eos/cms/store/mc/RunIISummer20UL16NanoAODAPVv9/VBFWH_HToBB_WToLNu_M-125_dipoleRecoilOn_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v11-v1/40000/5DD97E48-6DB1-3F45-81D0-53B29C28D752.root
+root://eosuser.cern.ch//eos/cms/store/mc/RunIISummer20UL16NanoAODAPVv9/VBFWH_HToBB_WToLNu_M-125_dipoleRecoilOn_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v11-v1/40000/A8298B20-3F13-C847-A28E-23D575796F96.root
+root://eosuser.cern.ch//eos/cms/store/mc/RunIISummer20UL16NanoAODAPVv9/VBFWH_HToBB_WToLNu_M-125_dipoleRecoilOn_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v11-v1/40000/D0CF743E-4332-8940-81B4-C3850C03AA80.root

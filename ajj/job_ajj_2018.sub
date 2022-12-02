@@ -1,0 +1,13 @@
+universe = vanilla
+arguments = 2018 samples.json outfile_2018.coffea 20
+executable = run_ajj.sh
++JobFlavour = "tomorrow"
+output = /afs/cern.ch/work/y/yian/work/DESY_pro/ajj/out/$(ClusterId).$(ProcId).out
+error = /afs/cern.ch/work/y/yian/work/DESY_pro/ajj/out/$(ClusterId).$(ProcId).out
+log = /afs/cern.ch/work/y/yian/work/DESY_pro/ajj/log/$(ClusterId).log
+requirements = (OpSysAndVer =?= "CentOS7")
+request_cpus = 20
+transfer_output_files = ""
+request_memory = 30GB
+queue
+
