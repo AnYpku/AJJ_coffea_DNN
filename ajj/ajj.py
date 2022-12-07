@@ -182,7 +182,7 @@ class ajjProcessor(processor.ProcessorABC):
                                 weight=weights['nom']
                             )
         def get_weight(dataset,sel_weight,sel_particle,sel_events,evaluator):
-            if dataset in ['singleelectron','singlemuon','egamma']:
+            if dataset in ['electron','muon','egamma']:
                 sel_weight['nom'] = np.ones(len(sel_events))
                 print('data length/weight:',len(sel_events),'; ',sel_weight['nom'])
             else:
@@ -194,9 +194,12 @@ class ajjProcessor(processor.ProcessorABC):
                elif abs(sel_particle.pdgId[0,0])==11:
                   par_sf1='electronidsf'
                   par_sf2='electronrecosf'
+               elif abs(sel_particle.pdgId[0,0])==22:
+                  par_sf1='photonidsf'
+                  par_sf2='photonpixelsf'
       
-               sel_sf1 = evaluator[par_sf1](abs(sel_particle[:,0].eta), sel_particle[:,0].pt)*evaluator['muonidsf'](abs(sel_particle[:,1].eta), sel_particle[:,1].pt)
-               sel_sf2 = evaluator[par_sf2](abs(sel_particle[:,0].eta), sel_particle[:,0].pt)*evaluator['muonisosf'](abs(sel_particle[:,1].eta), sel_particle[:,1].pt)
+               sel_sf1 = evaluator[par_sf1](abs(sel_particle[:,0].eta), sel_particle[:,0].pt)*evaluator[par_sf1](abs(sel_particle[:,1].eta), sel_particle[:,1].pt)
+               sel_sf2 = evaluator[par_sf2](abs(sel_particle[:,0].eta), sel_particle[:,0].pt)*evaluator[par_sf2](abs(sel_particle[:,1].eta), sel_particle[:,1].pt)
                sel_weight['nom'] = gen_weight*sel_puweight*sel_events.L1PreFiringWeight.Nom*sel_sf1*sel_sf2
                print('MC weight:',sel_weight['nom'])
             return sel_weight
@@ -208,48 +211,40 @@ class ajjProcessor(processor.ProcessorABC):
         sumsign = defaultdict(float)
         nevents = defaultdict(float)
 
-        if dataset not in ['singleelectron','singlemuon','egamma']:
+        if dataset not in ['electron','muon','egamma']:
             sumw[dataset] += ak.sum(events.Generator.weight)
             sumsign[dataset] += ak.sum(np.sign(events.Generator.weight))
         nevents[dataset] += len(events)
 
+        #Define output hists
         hists={}
         dataset_axis = hist.axis.StrCategory([], growth=True, name="dataset", label="Primary dataset")
         for hist_definition in hist_definitions:
             hists[hist_definition[0]]=hist.Hist( dataset_axis, hist.axis.Regular(hist_definition[2], hist_definition[3], hist_definition[4], name="variable"),storage="weight")
                              
-        if dataset in ['singleelectron','singlemuon','egamma']:
+        if dataset in ['electron','muon','egamma']:
             events = events[lumimask(events.run,events.luminosityBlock)]
 
-        events = events[(events.PuppiMET.pt > 30) | (events.PuppiMET.ptJERUp > 30) | (events.PuppiMET.ptJESUp > 30)]    
-
         if year == '2016pre' or year == '2016post':
-            if dataset == 'singlemuon':
-                events = events[events.HLT.IsoTkMu24 | events.HLT.IsoMu24]
-            elif dataset == 'singleelectron':
-                events = events[events.HLT.Ele27_WPTight_Gsf & ~(events.HLT.IsoTkMu24 | events.HLT.IsoMu24)]
+            if dataset == 'muon':
+                events = events[events.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT_Photon175 | HLT_Photon75_R9Id90_HE10_Iso40_EBOnly_VBF]
+            elif dataset == 'electron':
+                events = events[events.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ | events.HLT_Photon175 | HLT_Photon75_R9Id90_HE10_Iso40_EBOnly_VBF]
             else:    
-                events = events[events.HLT.IsoTkMu24 | events.HLT.IsoMu24 | events.HLT.Ele27_WPTight_Gsf]
-            muon_pt_cut = 26
-            electron_pt_cut = 30
-        elif year == '2017':
-            if dataset == 'singlemuon':
-                events = events[events.HLT.IsoMu27]
-            elif dataset == 'singleelectron':
-                events = events[events.HLT.Ele32_WPTight_Gsf_L1DoubleEG & ~events.HLT.IsoMu27]
+                events = events[events.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ | events.HLT_Photon175 | HLT_Photon75_R9Id90_HE10_Iso40_EBOnly_VBF]
+            muon_pt_cut = 20
+            electron_pt_cut = 25
+            photon_pt_cut = 75
+        elif year == '2017' or year == '2018':
+            if dataset == 'muon':
+                events = events[events.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT_Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT_Photon200]
+            elif dataset == 'electron':
+                events = events[events.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL | events.HLT_Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT_Photon200]
             else:
-                events = events[events.HLT.IsoMu27 | events.HLT.Ele32_WPTight_Gsf_L1DoubleEG]
-            muon_pt_cut = 30
-            electron_pt_cut = 35
-        elif year == '2018':
-            if dataset == 'singlemuon':
-                events = events[events.HLT.IsoMu24]
-            elif dataset == 'egamma':    
-                events = events[events.HLT.Ele32_WPTight_Gsf & ~events.HLT.IsoMu24]
-            else:
-                events = events[events.HLT.IsoMu24 |events.HLT.Ele32_WPTight_Gsf]
-            muon_pt_cut = 26
-            electron_pt_cut = 35
+                events = events[events.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL | events.HLT_Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT_Photon200]
+            muon_pt_cut = 20
+            electron_pt_cut = 25
+            photon_pt_cut = 75
 
         if year == '2016pre' or year == '2016post':
             events = events[events.Flag.goodVertices & events.Flag.globalSuperTightHalo2016Filter & events.Flag.HBHENoiseFilter &  events.Flag.HBHENoiseIsoFilter & events.Flag.EcalDeadCellTriggerPrimitiveFilter & events.Flag.BadPFMuonFilter & events.Flag.BadPFMuonDzFilter & events.Flag.eeBadScFilter]
@@ -259,7 +254,7 @@ class ajjProcessor(processor.ProcessorABC):
         events = events[ (ak.num(events.Jet) > 1) ]
         print('total length: ',len(events))
 
-        if dataset not in ['singleelectron','singlemuon','egamma']:
+        if dataset not in ['electron','muon','egamma']:
             name_map = jec_stack.blank_name_map
             name_map['JetPt'] = 'pt'
             name_map['JetMass'] = 'mass'
@@ -295,14 +290,14 @@ class ajjProcessor(processor.ProcessorABC):
             jet_pt_jesup = events.Jet.pt
             jet_pt_jesdn = events.Jet.pt
 
-        tight_muons = events.Muon[events.Muon.tightId & (events.Muon.pfRelIso04_all < 0.15) & (events.Muon.pt > 10) & (abs(events.Muon.eta) < 2.4)]
-        tight_electrons = events.Electron[(events.Electron.pt > 10) & (events.Electron.mvaFall17V2Iso_WP80) & (abs(events.Electron.eta + events.Electron.deltaEtaSC) < 2.5) & (((abs(events.Electron.dz) < 0.1) & (abs(events.Electron.dxy) < 0.05) & (abs(events.Electron.eta + events.Electron.deltaEtaSC) < 1.479)) | ((abs(events.Electron.dz) < 0.2) & (abs(events.Electron.dxy) < 0.1) & (abs(events.Electron.eta + events.Electron.deltaEtaSC) > 1.479)))]
+        tight_muons = events.Muon[events.Muon.tightId & (events.Muon.pfRelIso04_all < 0.15) & (events.Muon.pt > muon_pt_cut) & (abs(events.Muon.eta) < 2.4)]
+        tight_electrons = events.Electron[(events.Electron.pt > electron_pt_cut) & (events.Electron.mvaFall17V2Iso_WP80) & (abs(events.Electron.eta + events.Electron.deltaEtaSC) < 2.5) & (((abs(events.Electron.dz) < 0.1) & (abs(events.Electron.dxy) < 0.05) & (abs(events.Electron.eta + events.Electron.deltaEtaSC) < 1.479)) | ((abs(events.Electron.dz) < 0.2) & (abs(events.Electron.dxy) < 0.1) & (abs(events.Electron.eta + events.Electron.deltaEtaSC) > 1.479)))]
         tight_photons=events.Photon[(ak.num(events.Photon)>0) & (events.Photon.pt>70) & (events.Photon.cutBased==3) & (events.Photon.pixelSeed==0) ]
         tight_jets=corrected_jets[(corrected_jets.jetId==6) & (corrected_jets.pt>30) & (abs(corrected_jets.eta)<4.7)]
         tight_jets_jesdn=corrected_jets[(corrected_jets.jetId==6) & (jet_pt_jesdn>30) & (abs(corrected_jets.eta)<4.7)]
         tight_jets_jesup=corrected_jets[(corrected_jets.jetId==6) & (jet_pt_jesup>30) & (abs(corrected_jets.eta)<4.7)]
 
-        if dataset not in ['singleelectron','singlemuon','egamma']:
+        if dataset not in ['electron','muon','egamma']:
            tight_jets_jerdn=corrected_jets[(corrected_jets.jetId==6) & (jet_pt_jerdn>30) & (abs(corrected_jets.eta)<4.7)]
            tight_jets_jerup=corrected_jets[(corrected_jets.jetId==6) & (jet_pt_jerup>30) & (abs(corrected_jets.eta)<4.7)]
         

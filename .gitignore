@@ -1,3 +1,8 @@
+*.pdf
+*_afs*
+.nfs*
+*.pyc
+
 # Prerequisites
 *.d
 
