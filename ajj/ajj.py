@@ -36,7 +36,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--year',dest='year',default='2018')
 parser.add_argument('--samples',dest='samples',default='samples.json')
 #parser.add_argument('--samples',dest='samples',default='inputfile.txt')
-parser.add_argument('--basedir',dest='basedir',default='/afs/cern.ch/user/y/yian/work/DESY_pro/ajj/')
+parser.add_argument('--basedir',dest='basedir',default='/afs/desy.de/user/y/yian/cms/AJJ_coffea_DNN/ajj')
 parser.add_argument('--outfile',dest='outfile',type=str,default='outfile.coffea')
 parser.add_argument('--nproc',dest='nproc',type=int,default='10')
 args = parser.parse_args()
@@ -227,21 +227,21 @@ class ajjProcessor(processor.ProcessorABC):
 
         if year == '2016pre' or year == '2016post':
             if dataset == 'muon':
-                events = events[events.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT_Photon175 | HLT_Photon75_R9Id90_HE10_Iso40_EBOnly_VBF]
+                events = events[events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT.Photon175 | HLT.Photon75_R9Id90_HE10_Iso40_EBOnly_VBF]
             elif dataset == 'electron':
-                events = events[events.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ | events.HLT_Photon175 | HLT_Photon75_R9Id90_HE10_Iso40_EBOnly_VBF]
+                events = events[events.HLT.Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ | events.HLT.Photon175 | HLT.Photon75_R9Id90_HE10_Iso40_EBOnly_VBF]
             else:    
-                events = events[events.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ | events.HLT_Photon175 | HLT_Photon75_R9Id90_HE10_Iso40_EBOnly_VBF]
+                events = events[events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT.Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ | events.HLT.Photon175 | HLT.Photon75_R9Id90_HE10_Iso40_EBOnly_VBF]
             muon_pt_cut = 20
             electron_pt_cut = 25
             photon_pt_cut = 75
         elif year == '2017' or year == '2018':
             if dataset == 'muon':
-                events = events[events.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT_Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT_Photon200]
+                events = events[events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT.Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT.Photon200]
             elif dataset == 'electron':
-                events = events[events.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL | events.HLT_Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT_Photon200]
+                events = events[events.HLT.Ele23_Ele12_CaloIdL_TrackIdL_IsoVL | events.HLT.Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT.Photon200]
             else:
-                events = events[events.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL | events.HLT_Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT_Photon200]
+                events = events[events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8 | events.HLT.Ele23_Ele12_CaloIdL_TrackIdL_IsoVL | events.HLT.Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT.Photon200]
             muon_pt_cut = 20
             electron_pt_cut = 25
             photon_pt_cut = 75

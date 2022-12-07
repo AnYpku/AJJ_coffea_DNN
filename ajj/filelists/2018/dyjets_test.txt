@@ -1,3 +1,2 @@
-/eos/user/y/yian/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_18UL/00C9792D-ACD2-2547-BB04-097F0C4E47E3.root
-/eos/user/y/yian/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_18UL/04724383-31E5-0544-8505-F60FF4A8673E.root
-/eos/user/y/yian/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_18UL/04EEF341-BC7A-A146-9DB7-712C8468F960.root
+/pnfs/desy.de/cms/tier2/store/mc/RunIISummer20UL18NanoAODv9/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/230000/00C9792D-ACD2-2547-BB04-097F0C4E47E3.root
+/pnfs/desy.de/cms/tier2/store/mc/RunIISummer20UL18NanoAODv9/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v2/230000/04724383-31E5-0544-8505-F60FF4A8673E.root
