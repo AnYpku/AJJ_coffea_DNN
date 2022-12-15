@@ -1,4 +1,3 @@
 {
-"egamma": {"filelist": "egamma.txt", "frac": 1, "mod": null, "residues": null},
-"dyjets": {"filelist": "dyjets.txt", "frac": 1, "mod": null, "residues": null}
+"egamma": {"filelist": "egamma.txt", "frac": 1, "mod": null, "residues": null}
 }

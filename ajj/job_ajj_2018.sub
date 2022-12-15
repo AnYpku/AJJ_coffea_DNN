@@ -1,5 +1,5 @@
 universe = vanilla
-arguments = 2018 samples.json outfile_2018.coffea 20
+arguments = 2018 samples.json outfile_egamma_2018.coffea 20
 executable = run_ajj.sh
 +JobFlavour = "tomorrow"
 output = /afs/cern.ch/work/y/yian/work/DESY_pro/AJJ_coffea_DNN/ajj/out/$(ClusterId).$(ProcId).out
