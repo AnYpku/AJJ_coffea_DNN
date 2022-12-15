@@ -235,12 +235,16 @@ class ajjProcessor(processor.ProcessorABC):
             muon_pt_cut = 20
             electron_pt_cut = 25
             photon_pt_cut = 75
-        elif year == '2017' or year == '2018':
-            if dataset == 'muon':
-                events = events[events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ | events.HLT.Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT.Photon200]
+        elif year == '2017' or yead == '2018':
+            if dataset == 'muon' and year == '2017':
+                events = events[events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8 | events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8 | events.HLT.Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT.Photon200]
+            elif dataset == 'muon' and year == '2018':
+                events = events[events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8 | events.HLT.Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT.Photon200]
             elif dataset == 'electron':
                 events = events[events.HLT.Ele23_Ele12_CaloIdL_TrackIdL_IsoVL | events.HLT.Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT.Photon200]
-            else:
+            elif year == '2017':
+                events = events[events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8 | events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8 | events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8 | events.HLT.Ele23_Ele12_CaloIdL_TrackIdL_IsoVL | events.HLT.Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT.Photon200]
+            elif year == '2018':
                 events = events[events.HLT.Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8 | events.HLT.Ele23_Ele12_CaloIdL_TrackIdL_IsoVL | events.HLT.Photon75_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3 | events.HLT.Photon200]
             muon_pt_cut = 20
             electron_pt_cut = 25
